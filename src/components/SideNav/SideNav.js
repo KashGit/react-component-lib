@@ -1,7 +1,7 @@
 import React, { cloneElement, Component, Children } from 'react';
 import PropTypes from 'prop-types';
 
-import Nav from '../Nav/Nav';
+import { Nav } from '../Nav';
 
 const contextTypes = {
     highlightColor: PropTypes.string,

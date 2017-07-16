@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
-import SideNav from '../../../components/SideNav/SideNav';
-import Nav, { NavIcon, NavText } from '../../../components/Nav/Nav';
+import { SideNav } from 'k-react/SideNav';
+import { Nav, NavIcon, NavText } from 'k-react/Nav';
 import SvgIcon from 'react-icons-kit';
 import { ic_aspect_ratio } from 'react-icons-kit/md/ic_aspect_ratio';
 import { ic_business } from 'react-icons-kit/md/ic_business';
