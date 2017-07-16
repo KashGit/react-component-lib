@@ -2,10 +2,10 @@ import React, { Children, Component } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
-const NavIcon = () => {
+export const NavIcon = () => {
     throw new Error('Should not render');
 };
-const NavText = () => {
+export const NavText = () => {
     throw new Error('Should not render');
 };
 

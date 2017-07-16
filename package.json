@@ -91,6 +91,7 @@
     "react-dev-utils": "^3.0.2",
     "react-docgen": "^2.14.0",
     "react-error-overlay": "^1.0.9",
+    "react-icons-kit": "^1.0.7",
     "style-loader": "0.18.2",
     "sw-precache-webpack-plugin": "0.11.3",
     "url-loader": "0.5.9",
