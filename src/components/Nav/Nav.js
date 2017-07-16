@@ -79,6 +79,7 @@ const collectStyleAndClsName = comp => {
     return { className, style };
 };
 
+/** Navigation Comonent */
 export class Nav extends Component {
   static contextTypes = {
       highlightColor: PropTypes.string,

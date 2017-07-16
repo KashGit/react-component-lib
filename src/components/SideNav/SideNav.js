@@ -12,6 +12,7 @@ const contextTypes = {
 
 const noop = () => {};
 
+/** Vertical Navigation container which generates menu dynamically and statically */
 export class SideNav extends Component {
   static childContextTypes = contextTypes;
   static propTypes = {
