@@ -11,19 +11,16 @@ import { ic_people } from 'react-icons-kit/md/ic_people';
 
 const Icon20 = props => <SvgIcon size={props.size || 20} icon={props.icon} />;
 
-const BaseContainer = props =>
-    <div
-        style={{
-            display: 'inline-block',
-            paddingTop: 16,
-            paddingBottom: 16,
-            fontFamily: 'Roboto',
-            width: 240,
-            ...props.style
-        }}
-    >
-        {props.children}
-    </div>;
+const BaseContainerResponsive = styled.div`
+            display: inline-block;
+            paddingTop: 16;
+            paddingBottom: 16;
+            fontFamily: Roboto;
+            width: 240;
+            background: #FFF;
+            color: #444;
+            boxShadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23)
+`;
 
 const Title = styled.div`
     padding: 12px;
@@ -38,6 +35,9 @@ const SeparatorTitleContainer = styled.div`
     color: #AAA;
     margin: 10px 12px;
     padding: 4px 12px 2px;
+    @media (max-width: 768px) {
+		display: none;
+	}
 `;
 
 const SeparatorTitle = props => {
@@ -48,6 +48,14 @@ const SeparatorTitle = props => {
         </SeparatorTitleContainer>
     );
 };
+
+const BaseContainer = props => {
+    return (
+        <BaseContainerResponsive>
+        {props.children}
+        </BaseContainerResponsive>
+    )
+}
 
 const NavMain = {
     dashboard: { title: 'Dashboard', icon: ic_aspect_ratio },
@@ -94,12 +102,7 @@ const BasicSideNavLite = () =>
 
 export default () => <div style={{ display: 'flex' }}>
     <Separator />
-    <BaseContainer
-        style={{
-            background: '#FFF',
-            color: '#444',
-            boxShadow: '0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23)'
-        }} >
+    <BaseContainer>
         <BasicSideNavLite />
     </BaseContainer>
 </div>;

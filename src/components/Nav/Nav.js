@@ -48,6 +48,9 @@ const NavTextCont = styled.div`
     vertical-align: middle;
     display: inline-flex;
     padding-right: 16px;
+    @media (max-width: 768px) {
+		display: none;
+	}
 `;
 
 const hasChildNav = children => {
