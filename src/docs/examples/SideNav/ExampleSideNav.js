@@ -52,57 +52,68 @@ const SeparatorTitle = props => {
 const BaseContainer = props => {
     return (
         <BaseContainerResponsive>
-        {props.children}
+            {props.children}
         </BaseContainerResponsive>
     )
 }
 
 const NavMain = {
     dashboard: { title: 'Dashboard', icon: ic_aspect_ratio },
-    templates: { title: 'App Templates', icon: ic_business_center },
-    containers: { title: 'Containers', icon: ic_format_list_bulleted }
-};
+    accounts: { title: 'Accounts', icon: ic_people },
+    templates: {
+                title: 'APP TEMPLATES', subMenu:
+                             { Motif: { title: 'Motif', icon: ic_format_list_bulleted },
+                               Plain: { title: 'Plain', icon: ic_business } 
+                             }
+               },
+    containers: { title: 'CONTAINERS', subMenu: 
+                            { 
+                                Flex: { title: 'Flex', icon: ic_format_list_bulleted } 
+                            }
+                }
+    };
 
-const BasicSideNavLite = () =>
-    <SideNav
-        highlightBgColor="#eee"
-        defaultSelected="products"
-        highlightColor="#E91E63"
-    >
-        <SeparatorTitle><div>ENDPOINT ACTIONS</div></SeparatorTitle>
-        {Object.keys(NavMain).map(key => {
-            //dynamically created the navs
-            return (
-                <Nav key={key} id={key}>
-                    <NavIcon><Icon20 icon={NavMain[key].icon} /></NavIcon>
-                    <NavText> {NavMain[key].title} </NavText>
-                </Nav>
-            );
-        })}
-        <SeparatorTitle>
-            <div> SETTINGS</div>
-        </SeparatorTitle>
-        <Nav id="customers">
-            <NavIcon><Icon20 icon={ic_people} /></NavIcon>
-            <NavText> User Management </NavText>
-            <Nav id="dashboard2">
-                <NavIcon><Icon20 size={16} icon={ic_aspect_ratio} /></NavIcon>
-                <NavText> Search </NavText>
-            </Nav>
-            <Nav id="sales2">
-                <NavIcon><Icon20 size={16} icon={ic_business} /></NavIcon>
-                <NavText> History </NavText>
-            </Nav>
-        </Nav>
-        <Nav id="sales">
-            <NavIcon><Icon20 icon={ic_business} /></NavIcon><NavText> Registries </NavText>
-        </Nav>
-    </SideNav>;
+    const BasicSideNavLite = () =>
+        <SideNav
+            highlightBgColor="#eee"
+            defaultSelected="products"
+            highlightColor="#E91E63"
+        >            
+            { Object.keys(NavMain).map(key => {
+
+                //dynamically created the navs
+                if (NavMain[key].subMenu) {
+                    return (
+                        <div>
+                            <SeparatorTitle>
+                                <div> {NavMain[key].title}</div>
+                            </SeparatorTitle>
+
+                            {Object.keys(NavMain[key].subMenu).map(k => {
+                                return (<Nav key={k} id={k}>
+                                    <NavIcon><Icon20 icon={NavMain[key].subMenu[k].icon} /></NavIcon>
+                                    <NavText> {NavMain[key].subMenu[k].title} </NavText>
+                                </Nav>
+                                );
+                            })}
+                        </div>
+                    );
+                }
+                else {
+                    return (
+                        <Nav key={key} id={key}>
+                            <NavIcon><Icon20 icon={NavMain[key].icon} /></NavIcon>
+                            <NavText> {NavMain[key].title} </NavText>
+                        </Nav>
+                    );
+                }
+            })}
+        </SideNav>;
 
 
-export default () => <div style={{ display: 'flex' }}>
-    <Separator />
-    <BaseContainer>
-        <BasicSideNavLite />
-    </BaseContainer>
-</div>;
+    export default () => <div style={{ display: 'flex' }}>
+        <Separator />
+        <BaseContainer>
+            <BasicSideNavLite />
+        </BaseContainer>
+    </div>;
